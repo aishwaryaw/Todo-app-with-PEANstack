@@ -1,0 +1,43 @@
+
+<div class="container">
+<h4 class="text-center mt-5">Todo component</h4>
+
+<form class="d-flex mt-5">
+
+    <div class="form-group flex-grow-1">
+    <input type="text" name="description" [(ngModel)] = "description" class="form-control" placeholder="Enter todo">
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary" (click) = "create_todo()">Add todo</button>
+    </div>
+
+</form>
+
+<table class="table mt-5 text-center">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+     
+        <tr *ngFor = "let todo of todos">
+          <td>{{todo.description}}</td>
+          <td>
+            <app-edit-todos-component [todo] = "todo" (changedesc) = "changeDescription($event)"></app-edit-todos-component>
+          </td>
+          <td>
+            <button
+              class="btn btn-danger" (click) = "delete_todo(todo.todo_id)">Delete</button>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+

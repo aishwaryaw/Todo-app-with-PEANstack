@@ -1,0 +1,60 @@
+
+ <button
+ type="button"
+ class="btn btn-warning"
+ data-toggle="modal"
+ attr.data-target =  "#id{{ todo.todo_id }}"
+>
+ Edit
+</button>
+
+<div
+ class="modal"
+ id ="id{{ todo.todo_id }}">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h4 class="modal-title">Edit Todo</h4>
+       <button
+         type="button"
+         class="close"
+         data-dismiss="modal"
+         (click) = "retrieve_old_data()"
+        
+       >  
+         &times;
+       </button>
+     </div>
+
+     <div class="modal-body">
+       <input
+         type="text"
+         className="form-control"
+         [(ngModel)] = "description"
+       />
+     </div>
+
+     <p *ngIf="error">{{error}}</p>
+     <div class="modal-footer">
+       <button
+         type="button"
+         class="btn btn-warning"
+         attr.data-dismiss="{{close}}"
+        (click) = "edit_todo()"
+       
+       >
+         Edit
+       </button>
+       <button
+         type="button"
+         class="btn btn-danger"
+         data-dismiss="modal"
+         (click) = "retrieve_old_data()"
+       >
+         Close
+       </button>
+     </div>
+   </div>
+ </div>
+</div>
+  
